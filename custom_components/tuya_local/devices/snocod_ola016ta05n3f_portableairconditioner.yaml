@@ -1,6 +1,8 @@
-name: Air conditioner
+name: Portable air conditioner
 products:
   - id: 5exkohwlzeaghjl1
+    manufacturer: SNOCOD
+    model: OL-A016TA05N3/F
 entities:
   - entity: climate
     dps:
