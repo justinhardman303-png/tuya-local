@@ -41,13 +41,13 @@ entities:
           - value: "C"
       - id: 23
         type: integer
+        name: current_temperature
+      - id: 24
+        type: integer
         name: temperature
         range:
           min: 61
           max: 90
-      - id: 24
-        type: integer
-        name: current_temperature
       - id: 101
         type: boolean
         name: preset_mode
