@@ -1,0 +1,65 @@
+name: Ceiling fan
+products:
+  - id: b0as6ur3jkjjaoww
+entities:
+  - entity: light
+    dps:
+      - id: 20
+        type: boolean
+        name: switch
+      - id: 22
+        type: integer
+        name: brightness
+        range:
+          min: 1
+          max: 100
+      - id: 23
+        type: integer
+        name: color_temp
+        # device reports Kelvin directly (seen 2700 warmest, 6500 coolest)
+        range:
+          min: 2700
+          max: 6500
+  - entity: time
+    translation_key: timer
+    category: config
+    dps:
+      - id: 26
+        type: integer
+        optional: true
+        name: second
+        range:
+          min: 0
+          max: 86399
+  - entity: fan
+    dps:
+      - id: 60
+        type: boolean
+        name: switch
+      - id: 61
+        type: string
+        name: preset_mode
+        # only "normal" observed so far
+      - id: 62
+        type: integer
+        name: speed
+        range:
+          min: 1
+          max: 6  # TBD: confirm number of speeds
+      - id: 63
+        type: string
+        name: direction
+  - entity: number
+    name: Fan timer
+    translation_key: timer
+    category: config
+    icon: "mdi:fan-clock"
+    dps:
+      - id: 64
+        type: integer
+        optional: true
+        name: value
+        unit: min
+        range:
+          min: 0
+          max: 540
