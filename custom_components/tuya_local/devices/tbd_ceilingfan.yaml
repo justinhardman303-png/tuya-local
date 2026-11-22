@@ -32,6 +32,7 @@ entities:
           min: 0
           max: 86399
   - entity: fan
+    translation_only_key: fan_with_presets
     dps:
       - id: 60
         type: boolean
@@ -39,13 +40,19 @@ entities:
       - id: 61
         type: string
         name: preset_mode
-        # only "normal" observed so far
+        mapping:
+          - dps_val: normal
+            value: normal
+          - dps_val: nature
+            value: nature
+          - dps_val: sleep
+            value: sleep
       - id: 62
         type: integer
         name: speed
         range:
           min: 1
-          max: 6  # TBD: confirm number of speeds
+          max: 6
       - id: 63
         type: string
         name: direction
