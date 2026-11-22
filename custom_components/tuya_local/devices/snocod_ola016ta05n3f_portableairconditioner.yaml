@@ -1,0 +1,98 @@
+name: Portable air conditioner
+products:
+  - id: 5exkohwlzeaghjl1
+    manufacturer: SNOCOD
+    model: OL-A016TA05N3/F
+entities:
+  - entity: climate
+    dps:
+      - id: 1
+        type: boolean
+        name: hvac_mode
+        mapping:
+          - dps_val: false
+            value: "off"
+          - dps_val: true
+            constraint: mode
+            conditions:
+              - dps_val: Cool
+                value: cool
+              - dps_val: Fan
+                value: fan_only
+              - dps_val: Dyr  # device reports "Dyr", not "Dry"
+                value: dry
+      - id: 4
+        type: string
+        name: mode
+        hidden: true
+      - id: 5
+        type: string
+        name: fan_mode
+        mapping:
+          - dps_val: Low
+            value: low
+          - dps_val: High
+            value: high
+      - id: 19
+        type: string
+        optional: true
+        name: temperature_unit
+        mapping:
+          - dps_val: f
+            value: "F"
+          - value: "C"
+      - id: 23
+        type: integer
+        name: current_temperature
+      - id: 24
+        type: integer
+        name: temperature
+        range:
+          min: 61
+          max: 90
+      - id: 101
+        type: boolean
+        name: preset_mode
+        mapping:
+          - dps_val: true
+            value: sleep
+          - dps_val: false
+            value: comfort
+  - entity: binary_sensor
+    class: problem
+    category: diagnostic
+    dps:
+      - id: 22
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: false
+          - value: true
+      - id: 22
+        type: bitfield
+        name: fault_code
+      - id: 102
+        type: integer
+        optional: true
+        name: client_id
+      - id: 103
+        type: string
+        optional: true
+        name: heat_support
+  - entity: lock
+    translation_key: child_lock
+    category: config
+    dps:
+      - id: 14
+        type: boolean
+        name: lock
+  - entity: switch
+    name: Swing
+    category: config
+    icon: "mdi:arrow-oscillating"
+    dps:
+      - id: 15
+        type: boolean
+        optional: true
+        name: switch
