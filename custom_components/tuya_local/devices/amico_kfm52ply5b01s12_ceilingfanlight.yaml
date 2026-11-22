@@ -1,6 +1,8 @@
 name: Ceiling fan
 products:
   - id: b0as6ur3jkjjaoww
+    manufacturer: Amico
+    model: KFM52PLY5B01S1-2
 entities:
   - entity: light
     dps:
